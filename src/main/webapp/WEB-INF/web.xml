@@ -10,7 +10,7 @@
 	 <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
 	 <init-param>
 		 <param-name>javax.ws.rs.Application</param-name>
-		 <param-value>com.vanila.service.RestApplication</param-value>
+		 <param-value>com.vanila.service.app.RestApplication</param-value>
 	 </init-param>
 	 <load-on-startup>1</load-on-startup>
  </servlet>

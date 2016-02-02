@@ -1,4 +1,4 @@
-package com.vanila.service;
+package com.vanila.service.app;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,13 +16,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+import com.vanila.service.OrderService;
+import com.vanila.service.provider.ProtobufXmlJsonProvider;
+
+/**
+ * 
+ * User: purwol
+ * Date: Feb 2, 2016
+ * Time: 11:38:22 PM
+ */
 
 public class RestApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        //classes.add(UserService.class);
+        classes.add(OrderService.class);
         return classes;
     }
     
@@ -42,6 +51,9 @@ public class RestApplication extends Application {
         WinkProtobufProvider protobufProvider = new WinkProtobufProvider();
         singletons.add(protobufProvider);
         
+        //Protobuf as XML or JSON
+        singletons.add(new ProtobufXmlJsonProvider());
+
         return singletons;
     }
     
